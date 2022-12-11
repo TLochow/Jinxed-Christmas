@@ -1,0 +1,1 @@
+cat.png is a modified version of a cat spritesheet made by Shepardskin (https://twitter.com/Shepardskin) found at https://opengameart.org/content/cat-sprites
