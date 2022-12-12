@@ -4,6 +4,8 @@ onready var SpriteNode = $Sprite
 onready var AnimationPlayerNode = $AnimationPlayer
 onready var PresentNode = $Sprite/PresentNode
 
+onready var MainScene = get_parent()
+
 var Motion = Vector2(0.0, 0.0)
 var CoyoteTime = 0.0
 var JumpBoost = 0.0
@@ -18,6 +20,8 @@ var JumpBoostDefaultModificator = 2400.0
 var CarriesPresent = false
 var Present
 
+var HasControl = true
+
 func _physics_process(delta):
 	var isOnFloor = is_on_floor()
 	Motion.y = min(Motion.y + (yMotionModificator * delta), DownMotionLimitDefault)
@@ -28,18 +32,19 @@ func _physics_process(delta):
 		SpriteNode.scale = Vector2(-1.0, 1.0)
 		
 	var xMove = 0.0
-	if Input.is_action_pressed("ui_left"):
-		xMove -= xMoveDefault
-	if Input.is_action_pressed("ui_right"):
-		xMove += xMoveDefault
-	if Input.is_action_pressed("ui_up"):
-		if CoyoteTime > 0.0:
-			CoyoteTime = 0.0
-			JumpBoost = JumpBoostDefault
-			Motion.y = JumpBoostYMotionModificator
-		elif JumpBoost > 0.0:
-			Motion.y -= JumpBoost * delta
-			JumpBoost = max(JumpBoost - (delta * JumpBoostDefaultModificator), 0.0)
+	if HasControl:
+		if Input.is_action_pressed("ui_left"):
+			xMove -= xMoveDefault
+		if Input.is_action_pressed("ui_right"):
+			xMove += xMoveDefault
+		if Input.is_action_pressed("ui_up"):
+			if CoyoteTime > 0.0:
+				CoyoteTime = 0.0
+				JumpBoost = JumpBoostDefault
+				Motion.y = JumpBoostYMotionModificator
+			elif JumpBoost > 0.0:
+				Motion.y -= JumpBoost * delta
+				JumpBoost = max(JumpBoost - (delta * JumpBoostDefaultModificator), 0.0)
 	
 	if not CarriesPresent:
 		xMove *= 2.0
@@ -53,7 +58,7 @@ func _physics_process(delta):
 		elif Motion.x > 1.0:
 			moving = true
 		if moving:
-			SwitchAnimation(AnimationPlayerNode, "Walk")
+			SwitchAnimation(AnimationPlayerNode, "Run")
 		else:
 			SwitchAnimation(AnimationPlayerNode, "Idle")
 	else:
@@ -68,8 +73,8 @@ func _physics_process(delta):
 		CoyoteTime -= delta
 
 func SwitchAnimation(animationPlayer, animation):
-	if animation == "Walk" and not CarriesPresent:
-		animation = "Run"
+	if animation == "Run" and CarriesPresent:
+		animation = "Walk"
 	if animationPlayer.current_animation != animation:
 		animationPlayer.play(animation)
 
@@ -77,16 +82,21 @@ func _on_PresentDetector_body_entered(body):
 	if not CarriesPresent and not body.Falling:
 		CarriesPresent = true
 		Present = body
-		body.PickUp(self)
+		body.PickUp()
 		Global.ReparentNode(body, PresentNode)
 
-func _on_PresentDetector_area_entered(area):
-	pass
+func _on_PresentDetector_area_entered(_area):
+	if CarriesPresent:
+		CarriesPresent = false
+		Present.Fall(SpriteNode.scale * -100.0, true)
+		Global.ReparentNode(Present, MainScene)
+		Present.set_position(PresentNode.get_global_position())
+		Present.connect("Collected", MainScene, "PresentCollected")
 
 func _input(event):
 	if event.is_action_pressed("ui_down"):
 		if CarriesPresent:
 			CarriesPresent = false
 			Present.Fall(SpriteNode.scale * -100.0)
-			Global.ReparentNode(Present, get_tree().root)
+			Global.ReparentNode(Present, MainScene)
 			Present.set_position(PresentNode.get_global_position())
