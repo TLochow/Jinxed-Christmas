@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/HighscoreEntry.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/ARCADE_N.TTF" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 2
+font_data = ExtResource( 2 )
+
+[node name="HighscoreEntry" type="CenterContainer"]
+margin_left = -128.0
+margin_right = 128.0
+grow_horizontal = 2
+rect_min_size = Vector2( 256, 0 )
+rect_pivot_offset = Vector2( 696, -80 )
+script = ExtResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 76.0
+margin_right = 180.0
+margin_bottom = 17.0
+
+[node name="NumberLabel" type="Label" parent="HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 17.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "1."
+align = 1
+valign = 1
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+margin_left = 36.0
+margin_right = 84.0
+margin_bottom = 17.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "AAA"
+align = 1
+valign = 1
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer"]
+margin_left = 88.0
+margin_right = 104.0
+margin_bottom = 17.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "0"
+align = 1
+valign = 1

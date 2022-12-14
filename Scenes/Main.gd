@@ -4,6 +4,8 @@ var PRESENTPLATFORMSCENE = preload("res://Scenes/PresentPlatform.tscn")
 var BASICEVALUATORSCENE = preload("res://Scenes/BasicEvaluator.tscn")
 var EVALUATORSCENE = preload("res://Scenes/Evaluator.tscn")
 
+var ENDSCREENSCENE = preload("res://Scenes/EndScreen.tscn")
+
 onready var PickupLight = $PickupArea/Light2D
 
 onready var GenerateOrderTimer = $GenerateOrderTimer
@@ -55,7 +57,7 @@ func _process(delta):
 	PickupLight.color = Color.from_hsv(LightColorHue, 1.0, 1.0)
 	
 	if CountTime:
-		TimeLeft = max(TimeLeft - (delta * 2.0), 0.0)
+		TimeLeft = max(TimeLeft - (delta * 5.0), 0.0)
 		TimeBar.value = TimeLeft
 		if TimeLeft == 0.0:
 			CountValid(false)
@@ -176,6 +178,9 @@ func CountValid(valid):
 		Lives -= 1
 		if Lives == 0:
 			$Player.HasControl = false
+			var endScreen = ENDSCREENSCENE.instance()
+			endScreen.Score = Score
+			add_child(endScreen)
 	OrderEvaluator.queue_free()
 	
 	LivesLabel.text = str(Lives)

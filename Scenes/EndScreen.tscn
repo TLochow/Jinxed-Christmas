@@ -1,0 +1,191 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Graphics/ARCADE_N.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/EndScreen.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[node name="EndScreen" type="CanvasLayer"]
+layer = 10
+script = ExtResource( 2 )
+
+[node name="Control" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="Label" type="Label" parent="Control"]
+anchor_right = 1.0
+margin_bottom = 40.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+valign = 1
+
+[node name="PresentsLabel" type="Label" parent="Control"]
+anchor_right = 1.0
+margin_top = 40.0
+margin_bottom = 80.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Presents delivered: "
+align = 1
+valign = 1
+
+[node name="EnterName" type="Control" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 80.0
+
+[node name="Label" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_top = 8.0
+margin_bottom = 32.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "New Highscore!
+
+Enter Name:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel1" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_left = 216.0
+margin_top = 80.0
+margin_right = -272.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel2" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_left = 244.0
+margin_top = 80.0
+margin_right = -244.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel3" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_left = 272.0
+margin_top = 80.0
+margin_right = -216.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "A"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameCursorLabel" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_left = 216.0
+margin_top = 88.0
+margin_right = -272.0
+margin_bottom = 112.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "_"
+align = 1
+valign = 1
+
+[node name="OkLabel" type="Label" parent="Control/EnterName"]
+anchor_right = 1.0
+margin_left = 312.0
+margin_top = 80.0
+margin_right = -168.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Ok"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SureLabel" type="Label" parent="Control/EnterName"]
+visible = false
+anchor_right = 1.0
+margin_left = 400.0
+margin_top = 80.0
+margin_right = -64.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Yes"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CursorTimer" type="Timer" parent="Control/EnterName"]
+wait_time = 0.5
+
+[node name="HighScores" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 80.0
+
+[node name="Label" type="Label" parent="Control/HighScores"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Highscores"
+align = 1
+valign = 1
+
+[node name="Scores" type="GridContainer" parent="Control/HighScores"]
+margin_top = 32.0
+margin_right = 512.0
+margin_bottom = 176.0
+columns = 2
+
+[node name="ContinueLabel" type="Label" parent="Control/HighScores"]
+visible = false
+anchor_right = 1.0
+margin_top = 184.0
+margin_bottom = 208.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Press any key to continue"
+align = 1
+valign = 1
+
+[node name="ContinueTimer" type="Timer" parent="Control/HighScores"]
+wait_time = 4.0
+one_shot = true
+
+[connection signal="timeout" from="Control/EnterName/CursorTimer" to="." method="_on_CursorTimer_timeout"]
+[connection signal="timeout" from="Control/HighScores/ContinueTimer" to="." method="_on_ContinueTimer_timeout"]
