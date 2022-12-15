@@ -126,4 +126,4 @@ func _input(event):
 	elif CanContinue:
 		if event is InputEventKey and event.pressed:
 			CanContinue = false
-			SceneChanger.ChangeScene("res://Scenes/Main.tscn")
+			SceneChanger.ChangeScene("res://Scenes/InfoScreen.tscn")

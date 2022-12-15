@@ -1,0 +1,322 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Graphics/ARCADE_N.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://Graphics/homespun.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Graphics/present-body.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/InfoScreen.gd" type="Script" id=4]
+[ext_resource path="res://Graphics/present-top.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/present-ribbon.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/cat.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "Info"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/CatMoveSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/CatJumpSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.1, 2, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 12, 13, 12, 12, 13 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/CatJumpSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 256, 272 ), Vector2( 256, 240 ), Vector2( 256, 272 ), Vector2( 256, 240 ), Vector2( 256, 272 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect/CatMoveSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect/CatJumpSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 12 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ColorRect/CatJumpSprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 256, 272 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ColorRect/ThrownPresent:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 412, 256 ) ]
+}
+
+[node name="InfoScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.00784314, 0.215686, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_bottom = 77.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "The Cat in
+the bag"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label2" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_top = 64.0
+margin_bottom = 104.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Jinxed Chistmas"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label3" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_top = 104.0
+margin_bottom = 144.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Collect presents per the instructions and bring them to Santa."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PresentBodySprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 32, 152 )
+texture = ExtResource( 3 )
+hframes = 8
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PresentTopSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 32, 152 )
+texture = ExtResource( 5 )
+hframes = 8
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PresentRibbonSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 32, 152 )
+texture = ExtResource( 6 )
+hframes = 8
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EvaluatorNode" type="Node2D" parent="ColorRect"]
+position = Vector2( 224, 144 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GeneratePresentTimer" type="Timer" parent="ColorRect"]
+wait_time = 4.0
+
+[node name="Label4" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_top = 176.0
+margin_right = -400.0
+margin_bottom = 193.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Controls:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label5" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 192.0
+margin_right = -134.0
+margin_bottom = 209.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "You can use the Arrow Keys, WASD, ZQSD or IJKL."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label6" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 216.0
+margin_right = -336.0
+margin_bottom = 233.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Left/Right to move."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CatMoveSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 80, 256 )
+texture = ExtResource( 7 )
+hframes = 6
+vframes = 3
+frame = 12
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label7" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_left = 168.0
+margin_top = 216.0
+margin_right = -176.0
+margin_bottom = 233.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Up to jump."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CatJumpSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 256, 272 )
+texture = ExtResource( 7 )
+hframes = 6
+vframes = 3
+frame = 12
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label8" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+margin_left = 320.0
+margin_top = 216.0
+margin_right = -5.0
+margin_bottom = 233.0
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Down to discard present."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CatStandSprite" type="Sprite" parent="ColorRect"]
+position = Vector2( 408, 264 )
+texture = ExtResource( 7 )
+hframes = 6
+vframes = 3
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ThrownPresent" type="Node2D" parent="ColorRect"]
+position = Vector2( 412, 256 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ThrowPresentTimer" type="Timer" parent="ColorRect"]
+wait_time = 2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Info = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[connection signal="timeout" from="ColorRect/GeneratePresentTimer" to="." method="_on_GeneratePresentTimer_timeout"]
+[connection signal="timeout" from="ColorRect/ThrowPresentTimer" to="." method="_on_ThrowPresentTimer_timeout"]
