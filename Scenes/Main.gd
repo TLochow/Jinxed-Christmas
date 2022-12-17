@@ -50,8 +50,8 @@ func _ready():
 	Lives = 9
 
 func _process(delta):
-	NoiseVector += Vector2(delta, delta)
-	PickupLight.set_position(Vector2(0.0, -96.0) + (Vector2(Noise.get_noise_2d(NoiseVector.x, NoiseVector.y), Noise.get_noise_2d(NoiseVector.y, NoiseVector.x)) * 10.0))
+	NoiseVector += Vector2(delta * 2.0, delta * 2.0)
+	PickupLight.set_position(Vector2(0.0, -96.0) + (Vector2(Noise.get_noise_2d(NoiseVector.x, NoiseVector.y), Noise.get_noise_2d(NoiseVector.y, NoiseVector.x)) * 15.0))
 	LightColorHue = wrapf(LightColorHue + (delta * 0.05), 0.0, 1.0)
 	PickupLight.color = Color.from_hsv(LightColorHue, 1.0, 1.0)
 	
@@ -97,6 +97,8 @@ func CountValid(valid):
 	ScoreLabel.text = str(Score)
 	TimeBar.visible = false
 	CountTime = false
+	
+	SoundPlayer.PlayValidationSound(valid)
 	
 	if Lives > 0:
 		GenerateOrderTimer.start()
