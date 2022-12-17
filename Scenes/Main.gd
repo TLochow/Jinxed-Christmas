@@ -22,6 +22,7 @@ var LightColorHue = 0.0
 
 var OrderScore = 0
 var OrderEvaluator
+var ReceptiveForPresents = false
 
 var Score = 0
 var Lives = 9
@@ -65,6 +66,7 @@ func _on_GenerateOrderTimer_timeout():
 	TimeBar.value = TimeLeft
 	TimeBar.visible = true
 	CountTime = true
+	ReceptiveForPresents = true
 	var presents = get_tree().get_nodes_in_group("Present")
 	var present = presents[randi() % presents.size()]
 	OrderScore += 1
@@ -73,11 +75,13 @@ func _on_GenerateOrderTimer_timeout():
 	EvaluatorNode.add_child(OrderEvaluator)
 
 func PresentCollected(present):
-	var valid = OrderEvaluator.Evaluate(present)
+	if ReceptiveForPresents:
+		var valid = OrderEvaluator.Evaluate(present)
+		CountValid(valid)
 	present.queue_free()
-	CountValid(valid)
 
 func CountValid(valid):
+	ReceptiveForPresents = false
 	if valid:
 		Score += 1
 	else:
