@@ -86,6 +86,7 @@ func CountValid(valid):
 		Score += 1
 	else:
 		Lives -= 1
+		OrderScore = max(OrderScore - 10, 0)
 		if Lives == 0:
 			$Player.HasControl = false
 			var endScreen = ENDSCREENSCENE.instance()

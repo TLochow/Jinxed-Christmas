@@ -24,7 +24,7 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=4]
 resource_name = "Info"
-length = 4.0
+length = 3.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect/CatMoveSprite:frame")
@@ -33,10 +33,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12, 13 ]
+"values": [ 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12, 13, 14, 15, 16, 17, 12 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ColorRect/CatJumpSprite:frame")
@@ -45,7 +45,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 1.1, 2, 3, 3.1 ),
+"times": PoolRealArray( 0, 1, 1.1, 1.9, 2.9, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 12, 12, 13, 12, 12, 13 ]
@@ -57,7 +57,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2, 3, 4 ),
+"times": PoolRealArray( 0, 1, 1.9, 2.9, 4 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 256, 272 ), Vector2( 256, 240 ), Vector2( 256, 272 ), Vector2( 256, 240 ), Vector2( 256, 272 ) ]
@@ -158,11 +158,12 @@ __meta__ = {
 
 [node name="Label3" type="Label" parent="ColorRect"]
 anchor_right = 1.0
-margin_top = 104.0
+margin_top = 96.0
 margin_bottom = 144.0
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "Collect presents per the instructions and bring them to Santa."
+text = "Grab any present thats valid for the given instructions
+and bring it to santa at the top."
 align = 1
 valign = 1
 __meta__ = {
@@ -205,7 +206,7 @@ wait_time = 4.0
 [node name="Label4" type="Label" parent="ColorRect"]
 anchor_right = 1.0
 margin_top = 176.0
-margin_right = -400.0
+margin_right = -424.0
 margin_bottom = 193.0
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
@@ -220,7 +221,7 @@ __meta__ = {
 anchor_right = 1.0
 margin_left = 8.0
 margin_top = 192.0
-margin_right = -134.0
+margin_right = -88.0
 margin_bottom = 209.0
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )

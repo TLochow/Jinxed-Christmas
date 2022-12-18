@@ -12,9 +12,9 @@ var HeadEvaluator = false
 func _ready():
 	if Negated:
 		var label = EVALUATORLABELSCENE.instance()
-		label.text = "NOT("
+		label.text = "NOT"
 		add_child(label)
-	elif ChildEvaluators.size() > 1:
+	if ChildEvaluators.size() > 1 and not HeadEvaluator:
 		var label = EVALUATORLABELSCENE.instance()
 		label.text = "("
 		add_child(label)
@@ -33,23 +33,19 @@ func _ready():
 			add_child(label)
 		add_child(evaluator)
 	
-	if Negated or ChildEvaluators.size() > 1:
+	if ChildEvaluators.size() > 1 and not HeadEvaluator:
 		var label = EVALUATORLABELSCENE.instance()
 		label.text = ")"
 		add_child(label)
 	
 	if HeadEvaluator:
-		var tree = get_tree()
-		yield(tree, "idle_frame")
+		yield(get_tree(), "idle_frame")
 		var width = rect_size.x
-		var scale = 1.0
 		if width > 420.0:
-			scale = 420.0 / width
+			var scale = 420.0 / width
 			rect_scale = Vector2(scale, scale)
-		yield(tree, "idle_frame")
-		modulate = Color(1.0, 1.0, 1.0, 1.0)
-		if width > 420.0:
 			rect_position.x *= scale
+		modulate = Color(1.0, 1.0, 1.0, 1.0)
 	else:
 		modulate = Color(1.0, 1.0, 1.0, 1.0)
 
