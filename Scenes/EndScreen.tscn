@@ -51,7 +51,7 @@ margin_top = 8.0
 margin_bottom = 32.0
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "New Highscore!
+text = "New Top 10!
 
 Enter Name:"
 align = 1
